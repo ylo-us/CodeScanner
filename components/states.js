@@ -58,5 +58,5 @@ const store = createStore(reducers);
 
 module.exports = {
 	store: store,
-	reducers: reducers
+	// reducers: reducers
 }

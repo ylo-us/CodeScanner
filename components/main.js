@@ -30,14 +30,15 @@ class Main extends Component {
   //   }
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.dispatch(actions.switchCamera('back'));
 		this.props.dispatch(actions.controlCamera(true));
+		// console.log('@DID MOUNT: ', this.props.showCamera);
 	}
 
 	addProduct(data) {
 		// this.setState({showCamera: false});
-		this.props.dispatch(actions.controlCamera(false));
+		this.props.dispatch(actions.controlCamera(true));
 		this.props.navigator.push({
 			title: 'add',
 			component: Add
@@ -47,7 +48,7 @@ class Main extends Component {
 	}
 
 	_searchProduct(upcCode, context) {
-		fetch('http://localhost:3000/checkCode', {
+		fetch('http://192.168.1.14:3000/checkCode', {
 			method: 'POST',
 			headers: {
 		    'Accept': 'application/json',
@@ -75,34 +76,43 @@ class Main extends Component {
 		});
 	}
 
-	scanCode() {
-		let data = upcGenerator();
+	scanCode(e) {
+		this.props.dispatch(actions.controlCamera(false));
 		let self = this;
 		AlertIOS.alert(
 			'Code Scanned!!',
 			'Search product or upload product?',
-			[{text: 'Search', onPress: () => {self._searchProduct(data, self)}},
-			 {text: 'Upload', onPress: () => {self.addProduct(data)}}]
+			[{text: 'Search', onPress: () => {self._searchProduct(e.data, self)}},
+			 {text: 'Upload', onPress: () => {self.addProduct(e.data)}}]
 		)
+  }
+
+  renderCamera() {
+  	if (this.props.showCamera) {
+  		return (
+  			<Camera
+	        ref="camera"
+	        style={styles.container}
+	        onBarCodeRead={this.scanCode.bind(this)}
+	        type={this.props.cameraType}>
+	      </Camera>
+  		);
+  	} else {
+  		return (
+  			<View></View>
+  		);
+  	}
   }
 
 	render() {
 		return (
-			<Camera
-        ref="camera"
-        style={styles.container}
-        onBarCodeRead={this.scanCode}
-        type={this.props.cameraType}>
-        <View style={styles.buttonBar}>
-	        <Button style={styles.button} onPress={() => this.scanCode()}>Scan!!</Button>
-				</View>
-      </Camera>
+			this.renderCamera()
 		);
 	}
 };
 
 const mapStateToProps = (store) => {
-	// console.log('state: ', store);
+	// console.log('@store: ', store);
 	return {
 		showCamera: store.camera.showCamera,
 		cameraType: store.camera.cameraType,
@@ -111,3 +121,8 @@ const mapStateToProps = (store) => {
 };
 
 export default connect(mapStateToProps)(Main)
+
+
+// <View style={styles.buttonBar}>
+// 		        <Button style={styles.button} onPress={() => this.scanCode()}>Scan!!</Button>
+// 					</View>

@@ -8,6 +8,7 @@ import { styles } from './styles.js';
 import { connect } from 'react-redux';
 import Button from 'react-native-button';
 import Main from './main.js';
+import * as actions from './actions.js';
 
 class Msg extends Component {
 	constructor(props) {
@@ -15,6 +16,7 @@ class Msg extends Component {
 	}
 
 	back() {
+		this.props.dispatch(actions.controlCamera(true));
 		this.props.navigator.pop();
 	}
 

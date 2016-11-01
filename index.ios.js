@@ -23,7 +23,7 @@ class codeScanner extends Component {
     return (
       <Provider store={states.store}>
         <Navigator 
-          initialRoute={{title: 'main', component: Main, info: ''}} 
+          initialRoute={{title: 'main', component: Main}} 
           renderScene={(route, navigator) => {
             if (route.title === 'main') {
               return <Main navigator={navigator}/>
@@ -32,7 +32,7 @@ class codeScanner extends Component {
               return <Add navigator={navigator}/>
             }
             if (route.title === 'message') {
-              return <Msg info={route.info} navigator={navigator}/>
+              return <Msg navigator={navigator}/>
             }
           }}
         />

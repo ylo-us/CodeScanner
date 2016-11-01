@@ -22,6 +22,7 @@ class Add extends Component {
 	}
 
 	goBack() {
+		this.props.dispatch(actions.controlCamera(true));
 		this.props.navigator.pop();
 	}
 
@@ -41,7 +42,7 @@ class Add extends Component {
 		} else {
 			// console.log('this.props.product_name: ', this.props.product_name);
 			// console.log('this.props.upc: ', this.props.upc);
-			fetch('http://localhost:3000/addProduct', {
+			fetch('http://192.168.1.14:3000/addProduct', {
 				method: 'POST', 
 				headers: {
 			    'Accept': 'application/json',

@@ -1,14 +1,14 @@
 export function controlCamera(bool) {
 	return {
 		type: 'SHOW_CAMERA',
-		playload: bool
+		payload: bool
 	}
 }
 
 export function switchCamera(cameraType) {
 	return {
 		type: 'SWITCH_CAMERA',
-		playload: cameraType
+		payload: cameraType
 	}
 }
 
