@@ -17,3 +17,7 @@
 - '/': get all product
 - '/addProduct': upload product
 - '/checkCode': search scanned product in database
+
+###Note
+- currently only support iOS
+- change the server address at ./components/serverAdderss.js
