@@ -1,15 +1,15 @@
 # codeScanner
 
-This app allows user to search product or upload new product to server.
+##This app allows user to search product or upload new product to server.
 
-Tech Stack: 
+###Tech Stack: 
 React-Native, Redux, Node, Express, MongoDB
 
-Scripts:
+###Scripts:
 start server: npm run server
 start ios simulator: npm run ios
 
-Endpoints
+###Endpoints
 '/': get all product
 '/addProduct': upload product
 '/checkCode': search scanned product in database
