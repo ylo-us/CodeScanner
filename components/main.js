@@ -13,6 +13,7 @@ import Add from './addProduct.js';
 import { styles } from './styles.js';
 import Camera from 'react-native-camera';
 import * as actions from './actions.js';
+import server from './serverAddress.js';
 
 // Assumption: camera reads the bar code in camera view and returns upc data
 // a helper function that generates upc code
@@ -48,7 +49,8 @@ class Main extends Component {
 	}
 
 	_searchProduct(upcCode, context) {
-		fetch('http://192.168.1.14:3000/checkCode', {
+		let endpoint = server + '/checkCode';
+		fetch(endpoint, {
 			method: 'POST',
 			headers: {
 		    'Accept': 'application/json',

@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { styles } from './styles.js';
 import Button from 'react-native-button';
 import * as actions from './actions.js';
+import server from './serverAddress.js';
 
 class Add extends Component {
 	constructor(props) {
@@ -42,7 +43,8 @@ class Add extends Component {
 		} else {
 			// console.log('this.props.product_name: ', this.props.product_name);
 			// console.log('this.props.upc: ', this.props.upc);
-			fetch('http://192.168.1.14:3000/addProduct', {
+			let endpoint = server + '/addProduct';
+			fetch(endpoint, {
 				method: 'POST', 
 				headers: {
 			    'Accept': 'application/json',
