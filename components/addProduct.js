@@ -73,7 +73,7 @@ class Add extends Component {
     	<View style={{flex: 3}}>
         <TextInput 
 					style={styles.textInput}
-					placeholder="enter product name here"
+					placeholder="Enter Product Name Here"
 					placeholderTextColor='#45990D'
 					onChangeText={(text) => this.props.dispatch(actions.updateProductName(text))} />
 					<View style={styles.buttonBar}>

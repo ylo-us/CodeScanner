@@ -17,7 +17,8 @@ export const styles = StyleSheet.create({
   textInput: {
     height: 40, 
     alignItems: 'center',
-    flex: 1
+    flex: 1,
+    margin: 50 
   },
   instructions: {
     textAlign: 'center',
