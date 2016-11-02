@@ -27,9 +27,10 @@ class Add extends Component {
 		this.props.navigator.pop();
 	}
 
-	uploadProduct() {
+	uploadProduct(context) {
 		// console.log('product_name: ', this.state.product_name);
 		// console.log('upc: ', this.state.upc);
+		let self = context;
 		if (this.props.product_name === '') {
 			AlertIOS.alert(
 				'Warning!!',
@@ -61,7 +62,8 @@ class Add extends Component {
 		  	// console.log('result from server: ', result);
 		  	AlertIOS.alert(
 					'The following product is added:',
-					'product_name: ' + result.product_name + '\nupc Code: ' + result.upc
+					'product_name: ' + result.product_name + '\nupc Code: ' + result.upc,
+					[{text: 'Back', onPress: () => {self.goBack()}}]
 				);
 		  });	
 		}
@@ -77,7 +79,7 @@ class Add extends Component {
 					placeholderTextColor='#45990D'
 					onChangeText={(text) => this.props.dispatch(actions.updateProductName(text))} />
 					<View style={styles.buttonBar}>
-		        <Button style={styles.button} onPress={() => this.uploadProduct()}>Upload!!</Button>
+		        <Button style={styles.button} onPress={() => this.uploadProduct(this)}>Upload!!</Button>
 						<Button style={styles.button} onPress={() => this.goBack()}>Back!!</Button>
 					</View>
 			</View>

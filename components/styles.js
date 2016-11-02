@@ -42,4 +42,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#45990D',
     margin: 5
   },
+  cameraBoundary: {
+    backgroundColor: 'transparent',
+    borderWidth: 5,
+    borderColor: '#45990D',
+    alignItems: 'center',
+    width: 300,
+    height: 200
+  },
 });

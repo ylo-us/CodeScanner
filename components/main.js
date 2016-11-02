@@ -48,6 +48,11 @@ class Main extends Component {
 		this.props.dispatch(actions.updateUpc(data));
 	}
 
+	goBack() {
+		this.props.dispatch(actions.controlCamera(true));
+		this.props.navigator.pop();
+	}
+
 	_searchProduct(upcCode, context) {
 		let endpoint = server + '/checkCode';
 		fetch(endpoint, {
@@ -68,12 +73,20 @@ class Main extends Component {
 			} else {
 				let product = JSON.parse(res._bodyText);
 				let result = product.upc === undefined ? 'no item found' : 'product found! \nproduct_name: ' + product.product_name + '\nupc: ' + product.upc;
-				context.props.dispatch(actions.updateMessage(result));
-				context.props.navigator.push({
-					title: 'message',
-					component: Msg,
-					// info: result
-				});
+				if (product.upc) {
+					context.props.dispatch(actions.updateMessage(result));
+					context.props.navigator.push({
+						title: 'message',
+						component: Msg,
+					});
+				} else {
+					AlertIOS.alert(
+						'Search Result',
+						'No Item Was Found. Upload New Item?',
+						[{text: 'Upload', onPress: () => {context.addProduct(upcCode);}},
+						{text: 'Back', onPress: () => {context.goBack();}}]
+					);
+				}
 			}
 		});
 	}
@@ -81,12 +94,7 @@ class Main extends Component {
 	scanCode(e) {
 		this.props.dispatch(actions.controlCamera(false));
 		let self = this;
-		AlertIOS.alert(
-			'Code Scanned!!',
-			'Search product or upload product?',
-			[{text: 'Search', onPress: () => {self._searchProduct(e.data, self)}},
-			 {text: 'Upload', onPress: () => {self.addProduct(e.data)}}]
-		)
+		this._searchProduct(e.data, this);
   }
 
   renderCamera() {
@@ -97,6 +105,9 @@ class Main extends Component {
 	        style={styles.container}
 	        onBarCodeRead={this.scanCode.bind(this)}
 	        type={this.props.cameraType}>
+	        <View style={styles.cameraBoundary}>
+	        	
+	        </View>
 	      </Camera>
   		);
   	} else {
