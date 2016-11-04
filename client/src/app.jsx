@@ -27,7 +27,7 @@ class App extends Component {
 	}
 
 	remove(e) {
-		console.log('event: ', e);
+		console.log('event: ', e.target);
 	}
 
 
@@ -84,9 +84,9 @@ class App extends Component {
 									<tr>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
-										<td><button type="button" 
+										<button type="button" 
 									className="btn btn-warning" 
-									onClick={(event)=> {this.remove(event)}}>Remove</button></td>
+									onClick={(event)=> {this.remove(event)}}>Remove</button>
 									</tr>
 								);
 							})}
