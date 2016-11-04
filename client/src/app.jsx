@@ -27,7 +27,8 @@ class App extends Component {
 	}
 
 	remove(e) {
-		console.log('event: ', e.text);
+		console.log('event: ', e.target);
+		console.log('event: ', e.target.innerHTML.text);
 	}
 
 
