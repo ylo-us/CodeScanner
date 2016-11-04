@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "mobile": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "start": "node ./server/server.js",
+    "server": "node ./server/server.js",
     "ios": "react-native run-ios"
   },
   "engines": {
