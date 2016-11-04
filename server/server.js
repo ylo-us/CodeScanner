@@ -6,8 +6,9 @@ var app = express();
 var port = process.env.port || 3000;
 
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../client'));
 
-app.get('/', function(req, res) {
+app.get('/web', function(req, res) {
 	var upc = [];
 	Product.find(function(err, products) {
 		if (err) {
@@ -23,11 +24,11 @@ app.get('/', function(req, res) {
 			}
 			res.status(200).json(upc);
 		}
-
 	})
 });
+
 app.post('/addProduct', function(req, res) {
-	// console.log(req.body);
+	console.log(req.body);
 	Product.create(req.body, function(err, product) {
 		res.setHeader('Content-Type', 'application/json');
 		if (err) {
@@ -42,6 +43,7 @@ app.post('/addProduct', function(req, res) {
 		}
 	})
 });
+
 app.post('/checkCode', function(req, res) {
 	Product.find({upc: req.body.upc}, function(err, product) {
 		res.setHeader('Content-Type', 'application/json');
