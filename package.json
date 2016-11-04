@@ -8,6 +8,9 @@
     "start": "nodemon ./server/server.js",
     "ios": "react-native run-ios"
   },
+  "engines": {
+    "node": "6.9.1"
+  },
   "dependencies": {
     "axios": "^0.15.2",
     "body-parser": "^1.15.2",
