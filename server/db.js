@@ -12,7 +12,7 @@ var productSchema = new mongoose.Schema({
 var Product = mongoose.model('product', productSchema);
 
 // connect to database
-mongoose.connect('mongodb://localhost/codescanner');
+mongoose.connect('mongodb://heroku_cbtwxx6q:12wqasxz@ds143707.mlab.com:43707/heroku_cbtwxx6q');
 var db = mongoose.connection;
 db.on('error', function() {
 	console.error.bind(console, 'connection error:');	
