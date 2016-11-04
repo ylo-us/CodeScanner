@@ -1,1 +1,1 @@
-module.exports = 'http://192.168.1.14:3000'
+module.exports = 'https://rocky-coast-60597.herokuapp.com/'
