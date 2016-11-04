@@ -81,7 +81,7 @@
 
 	e){
 	console.log('event: ',e.target);
-	console.log('event: ',e.target.innerHTML.text);
+	console.log('event: ',e.target.text);
 	}},{key:'addProduct',value:function addProduct()
 
 
