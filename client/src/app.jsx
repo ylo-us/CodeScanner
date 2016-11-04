@@ -70,7 +70,7 @@ class App extends Component {
 					<h3>Inventory</h3>
 					<button type="button" 
 									className="btn btn-info" 
-									onClick={()=> {this.refresh()}}>Refresh</button>
+									onClick={() => {this.refresh()}}>Refresh</button>
 					<table className="table table-bordered">
 						<thead>
 							<tr>
@@ -81,12 +81,9 @@ class App extends Component {
 						<tbody>
 							{this.state.product.map((product) => {
 								return (
-									<tr>
+									<tr onClick={(e) => {this.remove(e)}}>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
-										<button type="button" 
-									className="btn btn-warning" 
-									onClick={(event)=> {this.remove(event)}}>Remove</button>
 									</tr>
 								);
 							})}

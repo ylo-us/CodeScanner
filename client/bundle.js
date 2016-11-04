@@ -134,12 +134,9 @@
 	_react2.default.createElement('tbody',null,
 	this.state.product.map(function(product){
 	return(
-	_react2.default.createElement('tr',null,
+	_react2.default.createElement('tr',{onClick:function onClick(e){_this2.remove(e);}},
 	_react2.default.createElement('td',null,product.product_name),
-	_react2.default.createElement('td',null,product.upc),
-	_react2.default.createElement('button',{type:'button',
-	className:'btn btn-warning',
-	onClick:function onClick(event){_this2.remove(event);}},'Remove')));
+	_react2.default.createElement('td',null,product.upc)));
 
 
 	}))))));
