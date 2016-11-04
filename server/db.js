@@ -10,9 +10,11 @@ var productSchema = new mongoose.Schema({
 	upc: Number
 });
 var Product = mongoose.model('product', productSchema);
-
+var mongoURI = process.env.MONGOLAB_URI || 
+							 process.env.MONGOHQ_URL || 
+							 'mongodb://localhost/HelloMongoose';
 // connect to database
-mongoose.connect('mongodb://ds143707.mlab.com:43707/heroku_cbtwxx6q');
+mongoose.connect(mongoURI);
 var db = mongoose.connection;
 db.on('error', function() {
 	console.error.bind(console, 'connection error:');	
