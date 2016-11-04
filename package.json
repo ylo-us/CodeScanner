@@ -5,7 +5,7 @@
   "scripts": {
     "mobile": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "start": "nodemon ./server/server.js",
+    "start": "node ./server/server.js",
     "ios": "react-native run-ios"
   },
   "engines": {
