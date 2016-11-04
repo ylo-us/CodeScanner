@@ -80,7 +80,7 @@
 	}},{key:'remove',value:function remove(
 
 	e){
-	console.log('event: ',e.target);
+	console.log('event: ',e);
 	}},{key:'addProduct',value:function addProduct()
 
 
