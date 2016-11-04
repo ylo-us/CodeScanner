@@ -62,7 +62,11 @@
 	_this.state={
 	product:[]};return _this;
 
-	}_createClass(App,[{key:'refresh',value:function refresh()
+	}_createClass(App,[{key:'componentWillMount',value:function componentWillMount()
+
+	{
+	this.refresh();
+	}},{key:'refresh',value:function refresh()
 
 	{
 	var self=this;
@@ -73,11 +77,12 @@
 	catch(function(err){
 	console.log('error at componentWillMount: ',err);
 	});
-	}},{key:'componentWillMount',value:function componentWillMount()
+	}},{key:'remove',value:function remove(
 
-	{
-	this.refresh();
+	e){
+	console.log('event: ',e);
 	}},{key:'addProduct',value:function addProduct()
+
 
 	{
 	var self=this;
@@ -131,7 +136,10 @@
 	return(
 	_react2.default.createElement('tr',null,
 	_react2.default.createElement('td',null,product.product_name),
-	_react2.default.createElement('td',null,product.upc)));
+	_react2.default.createElement('td',null,product.upc),
+	_react2.default.createElement('td',null,_react2.default.createElement('button',{type:'button',
+	className:'btn btn-warning',
+	onClick:function onClick(event){_this2.remove(event);}},'Remove'))));
 
 
 	}))))));

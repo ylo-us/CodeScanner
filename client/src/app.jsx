@@ -11,6 +11,10 @@ class App extends Component {
 		};
 	}
 
+	componentWillMount() {
+		this.refresh();
+	}
+
 	refresh() {
 		const self = this;
 		axios.get(serverAdd + '/web')
@@ -22,9 +26,10 @@ class App extends Component {
 		})
 	}
 
-	componentWillMount() {
-		this.refresh();
+	remove(e) {
+		console.log('event: ', e);
 	}
+
 
 	addProduct() {
 		const self = this;
@@ -79,6 +84,9 @@ class App extends Component {
 									<tr>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
+										<td><button type="button" 
+									className="btn btn-warning" 
+									onClick={(event)=> {this.remove(event)}}>Remove</button></td>
 									</tr>
 								);
 							})}
