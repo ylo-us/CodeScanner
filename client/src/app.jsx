@@ -13,7 +13,7 @@ class App extends Component {
 
 	componentWillMount() {
 		const self = this;
-		axios.get('http://localhost:3000/web')
+		axios.get(serverAdd + '/web')
 		.then(function(res) {
 			self.setState({product: res.data});
 		})
@@ -26,7 +26,7 @@ class App extends Component {
 		const self = this;
 		let productName = document.getElementById('productName').value;
 		let upc = document.getElementById('upc').value;
-		axios.post('http://localhost:3000/addProduct', {
+		axios.post(serverAdd + '/addProduct', {
 			product_name: productName,
 			upc: upc
 		}).then(function(res) {

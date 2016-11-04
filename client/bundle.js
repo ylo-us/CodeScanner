@@ -66,7 +66,7 @@
 
 	{
 	var self=this;
-	_axios2.default.get('http://localhost:3000/web').
+	_axios2.default.get(_serverAddress2.default+'/web').
 	then(function(res){
 	self.setState({product:res.data});
 	}).
@@ -79,7 +79,7 @@
 	var self=this;
 	var productName=document.getElementById('productName').value;
 	var upc=document.getElementById('upc').value;
-	_axios2.default.post('http://localhost:3000/addProduct',{
+	_axios2.default.post(_serverAddress2.default+'/addProduct',{
 	product_name:productName,
 	upc:upc}).
 	then(function(res){
