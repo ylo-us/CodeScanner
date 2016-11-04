@@ -11,7 +11,7 @@ class App extends Component {
 		};
 	}
 
-	componentWillMount() {
+	refresh() {
 		const self = this;
 		axios.get(serverAdd + '/web')
 		.then(function(res) {
@@ -22,6 +22,10 @@ class App extends Component {
 		})
 	}
 
+	componentWillMount() {
+		this.refresh();
+	}
+
 	addProduct() {
 		const self = this;
 		let productName = document.getElementById('productName').value;
@@ -30,7 +34,7 @@ class App extends Component {
 			product_name: productName,
 			upc: upc
 		}).then(function(res) {
-			axios.get('http://localhost:3000/web').then(function(res) {
+			axios.get(serverAdd + '/web').then(function(res) {
 				self.setState({product: res.data});
 			}).catch(function(err) {
 				console.log('error: ', err);
@@ -59,6 +63,9 @@ class App extends Component {
 				</div>
 				<div className="container">
 					<h3>Inventory</h3>
+					<button type="button" 
+									className="btn btn-info" 
+									onClick={()=> {this.refresh()}}>Refresh</button>
 					<table className="table table-bordered">
 						<thead>
 							<tr>

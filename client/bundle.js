@@ -62,7 +62,7 @@
 	_this.state={
 	product:[]};return _this;
 
-	}_createClass(App,[{key:'componentWillMount',value:function componentWillMount()
+	}_createClass(App,[{key:'refresh',value:function refresh()
 
 	{
 	var self=this;
@@ -73,6 +73,10 @@
 	catch(function(err){
 	console.log('error at componentWillMount: ',err);
 	});
+	}},{key:'componentWillMount',value:function componentWillMount()
+
+	{
+	this.refresh();
 	}},{key:'addProduct',value:function addProduct()
 
 	{
@@ -83,7 +87,7 @@
 	product_name:productName,
 	upc:upc}).
 	then(function(res){
-	_axios2.default.get('http://localhost:3000/web').then(function(res){
+	_axios2.default.get(_serverAddress2.default+'/web').then(function(res){
 	self.setState({product:res.data});
 	}).catch(function(err){
 	console.log('error: ',err);
@@ -112,6 +116,9 @@
 
 	_react2.default.createElement('div',{className:'container'},
 	_react2.default.createElement('h3',null,'Inventory'),
+	_react2.default.createElement('button',{type:'button',
+	className:'btn btn-info',
+	onClick:function onClick(){_this2.refresh();}},'Refresh'),
 	_react2.default.createElement('table',{className:'table table-bordered'},
 	_react2.default.createElement('thead',null,
 	_react2.default.createElement('tr',null,
