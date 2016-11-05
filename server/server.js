@@ -47,7 +47,10 @@ app.post('/addProduct', function(req, res) {
 });
 
 app.post('/removeProduct', function(req, res) {
-	var removed = req.body;
+	var removed = [];
+	req.body.target.forEach(function(target) {
+		removed.push(target);
+	});
 	console.log('removed: ', removed);
 	Promise.each(removed, function(target) {
 		promisifyProduct.findOneAndRemove({upc: target})
