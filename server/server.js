@@ -62,7 +62,7 @@ app.post('/removeProduct', function(req, res) {
 			}
 		}
 	});
-}
+})
 
 app.post('/checkCode', function(req, res) {
 	Product.find({upc: req.body.upc}, function(err, product) {
