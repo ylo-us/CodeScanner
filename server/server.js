@@ -49,7 +49,9 @@ app.post('/removeProduct', function(req, res) {
 		if (err) {
 			res.status(400).json(err);
 		} else {
-			if (product === undefined) {
+			if (product) {
+				res.redirect('web');
+			} else {
 				Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
 					if (err) {
 						res.status(400).json(err);
@@ -57,8 +59,6 @@ app.post('/removeProduct', function(req, res) {
 						res.redirect('/web')
 					}
 				})
-			} else {
-				res.redirect('web');
 			}
 		}
 	});
