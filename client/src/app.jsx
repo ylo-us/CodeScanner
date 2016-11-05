@@ -47,16 +47,18 @@ class App extends Component {
 
 	addProduct() {
 		const self = this;
-		let productName = document.getElementById('productName').value;
-		let upc = document.getElementById('upc').value;
+		let productName = document.getElementById('productName');
+		let upc = document.getElementById('upc');
 		axios.post(serverAdd + '/addProduct', {
-			product_name: productName,
-			upc: upc
+			product_name: productName.value,
+			upc: upc.value
 		}).then(function(res) {
 			self.refresh();
 		}).catch(function(err) {
 			console.log('error happened: ', error);
 		})
+		productName.value = '';
+		upc.value = '';
 	}
 
 	render() {

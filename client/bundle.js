@@ -100,16 +100,18 @@
 
 	{
 	var self=this;
-	var productName=document.getElementById('productName').value;
-	var upc=document.getElementById('upc').value;
+	var productName=document.getElementById('productName');
+	var upc=document.getElementById('upc');
 	_axios2.default.post(_serverAddress2.default+'/addProduct',{
-	product_name:productName,
-	upc:upc}).
+	product_name:productName.value,
+	upc:upc.value}).
 	then(function(res){
 	self.refresh();
 	}).catch(function(err){
 	console.log('error happened: ',error);
 	});
+	productName.value='';
+	upc.value='';
 	}},{key:'render',value:function render()
 
 	{var _this2=this;
