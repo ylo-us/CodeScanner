@@ -38,7 +38,7 @@ class App extends Component {
 		axios.post(serverAdd + '/removeProduct', {
 			target: target
 		}).then(function(res) {
-			self.refresh();
+			// self.refresh();
 		}).catch(function(err) {
 			console.log('error at remove: ', err);
 		})
