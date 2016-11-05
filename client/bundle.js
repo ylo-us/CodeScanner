@@ -72,7 +72,7 @@
 	var self=this;
 	_axios2.default.get(_serverAddress2.default+'/web').
 	then(function(res){
-	console.log('res.data from get /web: ',res.data);
+
 	self.setState({product:res.data});
 	}).
 	catch(function(err){

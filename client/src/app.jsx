@@ -19,7 +19,7 @@ class App extends Component {
 		const self = this;
 		axios.get(serverAdd + '/web')
 		.then(function(res) {
-			console.log('res.data from get /web: ', res.data);
+			// console.log('res.data from get /web: ', res.data);
 			self.setState({product: res.data});
 		})
 		.catch(function(err) {
