@@ -29,6 +29,7 @@ class App extends Component {
 	remove(e) {
 		const self = this;
 		let target = e.target.textContent;
+
 		axios.post(serverAdd + '/removeProduct', {
 			target: target
 		}).then(function(res) {
@@ -58,7 +59,7 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.state.product);
+		// console.log(this.state.product);
 		return (
 			<div className="container">
 				<img src="./src/image/omg.png" className="img-rounded" width="309" height="88" />
@@ -79,19 +80,24 @@ class App extends Component {
 					<button type="button" 
 									className="btn btn-info" 
 									onClick={() => {this.refresh()}}>Refresh</button>
+					<button type="button" 
+									className="btn btn-warning" 
+									onClick={() => {this.remove(e)}}>Remove</button>
 					<table className="table table-bordered">
 						<thead>
 							<tr>
 								<th>Product Name</th>
 								<th>UPC Code</th>
+								<th>remove?</th>
 							</tr>
 						</thead>
 						<tbody>
 							{this.state.product.map((product) => {
 								return (
-									<tr onClick={(e) => {this.remove(e)}}>
+									<tr>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
+										<td><input type="checkbox" /></td>
 									</tr>
 								);
 							})}

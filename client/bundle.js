@@ -82,6 +82,7 @@
 	e){
 	var self=this;
 	var target=e.target.textContent;
+
 	_axios2.default.post(_serverAddress2.default+'/removeProduct',{
 	target:target}).
 	then(function(res){
@@ -111,7 +112,7 @@
 	}},{key:'render',value:function render()
 
 	{var _this2=this;
-	console.log(this.state.product);
+
 	return(
 	_react2.default.createElement('div',{className:'container'},
 	_react2.default.createElement('img',{src:'./src/image/omg.png',className:'img-rounded',width:'309',height:'88'}),
@@ -132,19 +133,24 @@
 	_react2.default.createElement('button',{type:'button',
 	className:'btn btn-info',
 	onClick:function onClick(){_this2.refresh();}},'Refresh'),
+	_react2.default.createElement('button',{type:'button',
+	className:'btn btn-warning',
+	onClick:function onClick(){_this2.remove(e);}},'Remove'),
 	_react2.default.createElement('table',{className:'table table-bordered'},
 	_react2.default.createElement('thead',null,
 	_react2.default.createElement('tr',null,
 	_react2.default.createElement('th',null,'Product Name'),
-	_react2.default.createElement('th',null,'UPC Code'))),
+	_react2.default.createElement('th',null,'UPC Code'),
+	_react2.default.createElement('th',null,'remove?'))),
 
 
 	_react2.default.createElement('tbody',null,
 	this.state.product.map(function(product){
 	return(
-	_react2.default.createElement('tr',{onClick:function onClick(e){_this2.remove(e);}},
+	_react2.default.createElement('tr',null,
 	_react2.default.createElement('td',null,product.product_name),
-	_react2.default.createElement('td',null,product.upc)));
+	_react2.default.createElement('td',null,product.upc),
+	_react2.default.createElement('td',null,_react2.default.createElement('input',{type:'checkbox'}))));
 
 
 	}))))));
