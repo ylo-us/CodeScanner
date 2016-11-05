@@ -92,7 +92,7 @@
 	_axios2.default.post(_serverAddress2.default+'/removeProduct',{
 	target:target}).
 	then(function(res){
-
+	self.refresh();
 	}).catch(function(err){
 	console.log('error at remove: ',err);
 	});

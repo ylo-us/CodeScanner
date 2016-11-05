@@ -55,7 +55,7 @@ app.post('/removeProduct', function(req, res) {
 	Promise.each(removed, function(target) {
 		promisifyProduct.findOneAndRemove({upc: target})
 		.then(function(doc) {
-			res.redirect('/web');
+			res.end('');
 		})
 	})
 	// Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
