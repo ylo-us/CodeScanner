@@ -103,7 +103,7 @@ class App extends Component {
 									<tr>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
-										<td><input type="checkbox" class="check"/></td>
+										<td><input type="checkbox" className="check"/></td>
 									</tr>
 								);
 							})}

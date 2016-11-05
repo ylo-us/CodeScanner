@@ -156,7 +156,7 @@
 	_react2.default.createElement('tr',null,
 	_react2.default.createElement('td',null,product.product_name),
 	_react2.default.createElement('td',null,product.upc),
-	_react2.default.createElement('td',null,_react2.default.createElement('input',{type:'checkbox','class':'check'}))));
+	_react2.default.createElement('td',null,_react2.default.createElement('input',{type:'checkbox',className:'check'}))));
 
 
 	}))))));
