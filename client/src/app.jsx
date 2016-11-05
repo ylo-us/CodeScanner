@@ -22,13 +22,20 @@ class App extends Component {
 			self.setState({product: res.data});
 		})
 		.catch(function(err) {
-			console.log('error at componentWillMount: ', err);
+			console.log('error at refresh: ', err);
 		})
 	}
 
 	remove(e) {
-		console.log('event: ', e.target);
-		console.log('event: ', e.target.textContent);
+		const self = this;
+		let target = e.target.textContent;
+		axios.post(serverAdd + '/removeProduct', {
+			target: target
+		}).then(function(res) {
+			self.refresh();
+		}).catch(function(err) {
+			console.log('error at remove: ', err);
+		})
 	}
 
 

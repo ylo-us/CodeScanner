@@ -75,13 +75,20 @@
 	self.setState({product:res.data});
 	}).
 	catch(function(err){
-	console.log('error at componentWillMount: ',err);
+	console.log('error at refresh: ',err);
 	});
 	}},{key:'remove',value:function remove(
 
 	e){
-	console.log('event: ',e.target);
-	console.log('event: ',e.target.textContent);
+	var self=this;
+	var target=e.target.textContent;
+	_axios2.default.post(_serverAddress2.default+'/removeProduct',{
+	target:target}).
+	then(function(res){
+	self.refresh();
+	}).catch(function(err){
+	console.log('error at remove: ',err);
+	});
 	}},{key:'addProduct',value:function addProduct()
 
 

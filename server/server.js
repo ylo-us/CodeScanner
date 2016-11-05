@@ -28,7 +28,7 @@ app.get('/web', function(req, res) {
 });
 
 app.post('/addProduct', function(req, res) {
-	console.log(req.body);
+	// console.log(req.body);
 	Product.create(req.body, function(err, product) {
 		res.setHeader('Content-Type', 'application/json');
 		if (err) {
@@ -43,6 +43,25 @@ app.post('/addProduct', function(req, res) {
 		}
 	})
 });
+
+app.post('/removeProduct', function(req, res) {
+	Product.findOneAndRemove({product_name: req.body.target}, function(err, product) {
+		if (err) {
+			res.status(400).json(err);
+		} else {
+			if (product === undefined) {
+				Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
+					if (err) {
+						res.status(400).json(err);
+					} else {
+						res.redirect('/web')
+					}
+				})
+			} else {
+				res.redirect('web');
+			}
+		}
+})
 
 app.post('/checkCode', function(req, res) {
 	Product.find({upc: req.body.upc}, function(err, product) {
