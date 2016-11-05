@@ -84,19 +84,17 @@
 
 	var target=[];
 	$('.check:checkbox:checked').each(function(){
-
-	console.log($(this));
 	target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
 	$(this)['0'].parentNode.parentNode.remove();
 	});
 
-
-
-
-
-
-
-
+	_axios2.default.post(_serverAddress2.default+'/removeProduct',{
+	target:target}).
+	then(function(res){
+	self.refresh();
+	}).catch(function(err){
+	console.log('error at remove: ',err);
+	});
 	}},{key:'addProduct',value:function addProduct()
 
 
