@@ -87,7 +87,7 @@
 	$('.check:checkbox:checked').each(function(){
 	var node=$(this)['0'].parentNode;
 	target.push(node.parentNode.children[1].innerText);
-	node.parentNode.removeChild(node);
+
 	});
 
 	_axios2.default.post(_serverAddress2.default+'/removeProduct',{

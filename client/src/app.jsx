@@ -34,7 +34,7 @@ class App extends Component {
 		$('.check:checkbox:checked').each(function() {
 			let node = $(this)['0'].parentNode;
 			target.push(node.parentNode.children[1].innerText);
-			node.parentNode.removeChild(node);
+			// node.parentNode.removeChild(node);
 		});
 
 		axios.post(serverAdd + '/removeProduct', {
