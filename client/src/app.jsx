@@ -33,7 +33,7 @@ class App extends Component {
 		let target = []; 
 		$('.check:checkbox:checked').each(function() {
 			target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
-			$(this)['0'].parentNode.parentNode.remove();
+			$(this)['0'].parentNode.remove();
 		});
 
 		axios.post(serverAdd + '/removeProduct', {
