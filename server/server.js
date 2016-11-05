@@ -1,9 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var Promise = require('bluebird');
 var db = require('./db').db;
 var Product = require('./db').Product;
 var app = express();
 var port = process.env.PORT || 3000;
+var promisifyProduct = Promise.promisifyAll(Product);
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
@@ -45,23 +47,31 @@ app.post('/addProduct', function(req, res) {
 });
 
 app.post('/removeProduct', function(req, res) {
-	Product.findOneAndRemove({product_name: req.body.target}, function(err, product) {
-		if (err) {
-			res.status(400).json(err);
-		} else {
-			if (product) {
-				res.redirect('web');
-			} else {
-				Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
-					if (err) {
-						res.status(400).json(err);
-					} else {
-						res.redirect('/web')
-					}
-				})
-			}
-		}
-	});
+	var removed = req.body;
+	console.log('removed: ', removed);
+	Promise.each(removed, function(target) {
+		promisifyProduct.findOneAndRemove({upc: target})
+		.then(function(doc) {
+			res.redirect('/web');
+		})
+	})
+	// Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
+	// 	if (err) {
+	// 		res.status(400).json(err);
+	// 	} else {
+	// 		if (product) {
+	// 			res.redirect('web');
+	// 		} else {
+	// 			Product.findOneAndRemove({upc: req.body.target}, function(err, product) {
+	// 				if (err) {
+	// 					res.status(400).json(err);
+	// 				} else {
+	// 					res.redirect('/web')
+	// 				}
+	// 			})
+	// 		}
+	// 	}
+	// });
 })
 
 app.post('/checkCode', function(req, res) {

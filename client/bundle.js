@@ -77,11 +77,18 @@
 	catch(function(err){
 	console.log('error at refresh: ',err);
 	});
-	}},{key:'remove',value:function remove(
+	}},{key:'remove',value:function remove()
 
-	e){
+	{
 	var self=this;
-	var target=e.target.textContent;
+
+	var target=[];
+	$('.test:checkbox:checked').each(function(){
+	target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
+	$(this)['0'].parentNode.parentNode.remove();
+	});
+
+
 
 	_axios2.default.post(_serverAddress2.default+'/removeProduct',{
 	target:target}).
@@ -135,7 +142,7 @@
 	onClick:function onClick(){_this2.refresh();}},'Refresh'),
 	_react2.default.createElement('button',{type:'button',
 	className:'btn btn-warning',
-	onClick:function onClick(){_this2.remove(e);}},'Remove'),
+	onClick:function onClick(){_this2.remove();}},'Remove'),
 	_react2.default.createElement('table',{className:'table table-bordered'},
 	_react2.default.createElement('thead',null,
 	_react2.default.createElement('tr',null,
@@ -150,7 +157,7 @@
 	_react2.default.createElement('tr',null,
 	_react2.default.createElement('td',null,product.product_name),
 	_react2.default.createElement('td',null,product.upc),
-	_react2.default.createElement('td',null,_react2.default.createElement('input',{type:'checkbox'}))));
+	_react2.default.createElement('td',null,_react2.default.createElement('input',{type:'checkbox','class':'check'}))));
 
 
 	}))))));

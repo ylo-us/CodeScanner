@@ -26,9 +26,16 @@ class App extends Component {
 		})
 	}
 
-	remove(e) {
+	remove() {
 		const self = this;
-		let target = e.target.textContent;
+
+		let target = []; 
+		$('.test:checkbox:checked').each(function() {
+			target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
+			$(this)['0'].parentNode.parentNode.remove();
+		});
+		
+		// let target = e.target.textContent;
 
 		axios.post(serverAdd + '/removeProduct', {
 			target: target
@@ -82,7 +89,7 @@ class App extends Component {
 									onClick={() => {this.refresh()}}>Refresh</button>
 					<button type="button" 
 									className="btn btn-warning" 
-									onClick={() => {this.remove(e)}}>Remove</button>
+									onClick={() => {this.remove()}}>Remove</button>
 					<table className="table table-bordered">
 						<thead>
 							<tr>
@@ -97,7 +104,7 @@ class App extends Component {
 									<tr>
 										<td>{product.product_name}</td>
 										<td>{product.upc}</td>
-										<td><input type="checkbox" /></td>
+										<td><input type="checkbox" class="check"/></td>
 									</tr>
 								);
 							})}
