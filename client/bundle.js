@@ -83,7 +83,7 @@
 	var self=this;
 
 	var target=[];
-	$('.test:checkbox:checked').each(function(){
+	$('.check:checkbox:checked').each(function(){
 
 	console.log($(this));
 	target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
