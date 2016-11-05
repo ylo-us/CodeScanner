@@ -53,11 +53,7 @@ class App extends Component {
 			product_name: productName,
 			upc: upc
 		}).then(function(res) {
-			axios.get(serverAdd + '/web').then(function(res) {
-				self.setState({product: res.data});
-			}).catch(function(err) {
-				console.log('error: ', err);
-			})
+			self.refresh();
 		}).catch(function(err) {
 			console.log('error happened: ', error);
 		})

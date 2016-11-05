@@ -106,11 +106,7 @@
 	product_name:productName,
 	upc:upc}).
 	then(function(res){
-	_axios2.default.get(_serverAddress2.default+'/web').then(function(res){
-	self.setState({product:res.data});
-	}).catch(function(err){
-	console.log('error: ',err);
-	});
+	self.refresh();
 	}).catch(function(err){
 	console.log('error happened: ',error);
 	});
