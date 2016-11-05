@@ -34,16 +34,15 @@ class App extends Component {
 			target.push($(this)['0'].parentNode.parentNode.children[1].innerText);
 			$(this)['0'].parentNode.parentNode.remove();
 		});
-		
-		// let target = e.target.textContent;
+		console.log(target);
 
-		axios.post(serverAdd + '/removeProduct', {
-			target: target
-		}).then(function(res) {
-			self.refresh();
-		}).catch(function(err) {
-			console.log('error at remove: ', err);
-		})
+		// axios.post(serverAdd + '/removeProduct', {
+		// 	target: target
+		// }).then(function(res) {
+		// 	self.refresh();
+		// }).catch(function(err) {
+		// 	console.log('error at remove: ', err);
+		// })
 	}
 
 
