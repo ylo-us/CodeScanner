@@ -1,6 +1,6 @@
 # CodeScanner
 
-##This app allows user to search product or upload new product to server.
+##This app allows user to search product or upload new product to server by scanning bar code through a camera on a phone.
 
 ###Tech Stack: 
 - React Native (mobile)
