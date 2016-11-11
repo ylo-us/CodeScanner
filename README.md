@@ -3,7 +3,8 @@
 ##This app allows user to search product or upload new product to server.
 
 ###Tech Stack: 
-- React-Native 
+- React Native (mobile)
+- React (web)
 - Redux 
 - Node 
 - Express
@@ -14,10 +15,13 @@
 - start ios simulator: npm run ios
 
 ###Endpoints
-- '/': get all product
+- '/web': get all product
 - '/addProduct': upload product
 - '/checkCode': search scanned product in database
+- '/removeProduct': remove product in database
 
 ###Note
 - currently only support iOS
-- change the server address at ./components/serverAdderss.js
+- Web version: https://morning-eyrie-71286.herokuapp.com/
+
+###Event Flow
