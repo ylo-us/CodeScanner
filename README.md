@@ -25,4 +25,4 @@
 - Web version: https://morning-eyrie-71286.herokuapp.com/
 
 ###Event Flow
-![alt tag](https://github.com/ylo-us/codeScanner/blob/master/flow_chart.png =501x647)
+<img src="https://github.com/ylo-us/codeScanner/blob/master/flow_chart.png" width="501">
