@@ -1,4 +1,4 @@
-# codeScanner
+# CodeScanner
 
 ##This app allows user to search product or upload new product to server.
 
